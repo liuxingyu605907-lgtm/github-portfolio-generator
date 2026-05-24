@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #e2e8f0;
 }
 
 @theme inline {
@@ -14,13 +14,49 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #e2e8f0;
   }
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(8, 47, 73, 0.45), transparent 45%),
+    radial-gradient(circle at 78% 24%, rgba(30, 64, 175, 0.22), transparent 42%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.meteor {
+  transform: rotate(-22deg) translateX(-140px);
+  animation-name: meteor-fly;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes meteor-fly {
+  0% {
+    opacity: 0;
+    transform: rotate(-22deg) translateX(-140px);
+  }
+
+  12% {
+    opacity: 0.95;
+  }
+
+  60% {
+    opacity: 0.95;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-22deg) translateX(120vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meteor {
+    animation: none;
+  }
 }
