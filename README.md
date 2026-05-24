@@ -13,7 +13,7 @@
 
 ![首页截图](./docs/screenshots/home.png)
 
-![作品集页截图](./docs/screenshots/portfolio.png)
+![作品集页截图](./docs/screenshots/portfolio-success.png)
 
 ## 功能
 
