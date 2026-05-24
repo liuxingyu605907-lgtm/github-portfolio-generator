@@ -57,6 +57,7 @@ type GitHubRepoResponse = {
 };
 
 const GITHUB_API_BASE = "https://api.github.com";
+const githubToken = process.env.GITHUB_TOKEN;
 
 export class GitHubApiError extends Error {
   constructor(
@@ -69,11 +70,17 @@ export class GitHubApiError extends Error {
 }
 
 async function githubFetch<T>(path: string): Promise<T> {
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  if (githubToken) {
+    headers.Authorization = `Bearer ${githubToken}`;
+  }
+
   const response = await fetch(`${GITHUB_API_BASE}${path}`, {
-    headers: {
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
+    headers,
     next: {
       revalidate: 300,
     },

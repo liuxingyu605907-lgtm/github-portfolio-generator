@@ -38,6 +38,14 @@ npm install
 npm run dev
 ```
 
+如果 GitHub API 出现限流，可以在本地新建 `.env.local`：
+
+```text
+GITHUB_TOKEN=你的 GitHub token
+```
+
+这个变量只在服务端请求 GitHub API 时使用，不要提交到 GitHub。
+
 打开浏览器访问：
 
 ```text
